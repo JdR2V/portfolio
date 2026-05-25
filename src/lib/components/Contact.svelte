@@ -27,9 +27,13 @@
 		status = 'sending';
 
 		try {
-			// We'll wire this up to Resend (email API) in a later step.
-			// For now it simulates a successful send after 1 second.
-			await new Promise((r) => setTimeout(r, 1000));
+			const res = await fetch('/api/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ name, email, company, message })
+			});
+
+			if (!res.ok) throw new Error();
 			status = 'sent';
 			name = email = company = message = '';
 		} catch {
@@ -38,7 +42,7 @@
 	}
 
 	const links = [
-		{ key: 'email', value: 'hello@yourname.dev', href: 'mailto:hello@yourname.dev' },
+		{ key: 'email', value: 'jdr2v57@gmail.com', href: 'mailto:jdr2v57@gmail.com' },
 		{ key: 'linkedin', value: '/in/yourname', href: 'https://linkedin.com/in/yourname' },
 		{ key: 'github', value: 'github.com/JdR2V', href: 'https://github.com/JdR2V' }
 	];
