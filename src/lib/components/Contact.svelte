@@ -43,7 +43,11 @@
 
 	const links = [
 		{ key: 'email', value: 'jdr2v57@gmail.com', href: 'mailto:jdr2v57@gmail.com' },
-		{ key: 'linkedin', value: '/in/yourname', href: 'https://linkedin.com/in/yourname' },
+		{
+			key: 'linkedin',
+			value: '/in/juan-daniel-rubio',
+			href: 'https://linkedin.com/in/juan-daniel-rubio'
+		},
 		{ key: 'github', value: 'github.com/JdR2V', href: 'https://github.com/JdR2V' }
 	];
 </script>
