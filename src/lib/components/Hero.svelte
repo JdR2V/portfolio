@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
+	import { t } from '$lib/stores/language';
 
 	onMount(() => {
 		// Staggered entrance animation — each element fades up in sequence
@@ -21,27 +22,23 @@
 			<div class="hero-animate mb-6 flex items-center gap-3">
 				<div class="h-px w-7 bg-gradient-to-r from-accent to-transparent"></div>
 				<span class="text-xs tracking-[0.2em] text-accent uppercase">
-					full-stack developer · cali, colombia
+					{$t.hero.eyebrow}
 				</span>
 			</div>
 
 			<h1
 				class="hero-animate mb-4 font-display leading-[0.93] font-bold tracking-tight"
-				style="font-size: clamp(3rem, 8vw, 5rem)"
+				style="font-size: clamp(3.5rem, 7vw, 5rem)"
 			>
-				I build<br />
-				things<br />
-				for the <em class="text-accent">web</em>
+				{$t.hero.title1}<br />
+				{$t.hero.title2}<br />
+				{$t.hero.title3} <em class="text-accent">{$t.hero.titleEm}</em>
 			</h1>
 
 			<p
 				class="hero-animate mb-10 max-w-md text-sm leading-relaxed tracking-wide text-text-secondary"
 			>
-				Full-stack dev with roots in <strong class="font-normal text-text-primary"
-					>game development</strong
-				>
-				and <strong class="font-normal text-text-primary">multimedia production</strong>. Based in
-				Colombia. Working with <strong class="font-normal text-text-primary">Europe</strong>.
+				{$t.hero.desc}
 			</p>
 
 			<div class="hero-animate flex gap-3">
@@ -49,14 +46,14 @@
 					href="#work"
 					class="rounded bg-accent px-5 py-3 text-xs font-medium tracking-widest text-bg-primary"
 				>
-					view my work
+					{$t.hero.cta}
 				</a>
 				<a
 					href="/cv.pdf"
 					class="rounded border border-border px-5 py-3 text-xs tracking-widest text-text-secondary
-                 transition-colors duration-200 hover:border-accent hover:text-accent"
+            transition-colors duration-200 hover:border-accent hover:text-accent"
 				>
-					download cv →
+					{$t.hero.cv}
 				</a>
 			</div>
 		</div>
@@ -82,13 +79,13 @@
 				<div class="mb-1 font-display text-4xl text-text-primary">
 					3<span class="text-xl text-accent">+</span>
 				</div>
-				<div class="text-xs tracking-widest text-text-muted uppercase">years building</div>
+				<div class="text-xs tracking-widest text-text-muted uppercase">{$t.hero.years}</div>
 			</div>
 
 			<!-- Stat: EU -->
 			<div class="bg-bg-secondary p-5">
 				<div class="mb-1 font-display text-4xl text-accent">EU</div>
-				<div class="text-xs tracking-widest text-text-muted uppercase">timezone ready</div>
+				<div class="text-xs tracking-widest text-text-muted uppercase">{$t.hero.timezone}</div>
 			</div>
 		</div>
 	</div>

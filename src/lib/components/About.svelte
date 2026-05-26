@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { t } from '$lib/stores/language';
 
 	// Register the ScrollTrigger plugin — only needs to happen once, but
 	// doing it inside the component that uses it keeps things self-contained
@@ -25,7 +26,7 @@
 		{ key: 'location', value: 'Cali, Colombia 🇨🇴' },
 		{ key: 'timezone', value: 'UTC-5 · CET overlap ✓', accent: true },
 		{ key: 'languages', value: 'Spanish · English' },
-		{ key: 'stack', value: 'SvelteKit · React · Node', accent: true },
+		{ key: 'stack', value: 'SvelteKit · React · Node.JS · TypeScript', accent: true },
 		{ key: 'background', value: 'Game dev · Multimedia' },
 		{ key: 'open to', value: 'Remote EU contracts', accent: true }
 	];
@@ -38,29 +39,31 @@
 			<span class="rounded border border-accent/30 px-2 py-0.5 text-xs tracking-[0.2em] text-accent"
 				>01</span
 			>
-			<span class="text-xs tracking-[0.2em] text-text-muted uppercase">about me</span>
+			<span class="text-xs tracking-[0.2em] text-text-muted uppercase">{$t.about.label}</span>
 			<div class="from-border h-px flex-1 bg-gradient-to-r to-transparent"></div>
 		</div>
 
-		<h2 class="reveal mb-8 font-display text-4xl font-bold tracking-tight">
-			The person behind<br />the <em class="text-accent">code</em>
+		<h2 class="mb-8 font-display text-3xl font-bold tracking-tight md:text-4xl">
+			{$t.about.title1}<br />{$t.about.title2} <em class="text-accent">{$t.about.titleEm}</em>
 		</h2>
 
 		<div class="grid gap-10 md:grid-cols-2">
 			<!-- Text -->
-			<p class="reveal text-sm leading-[2.1] text-text-secondary">
-				I came up through <strong class="font-normal text-text-primary">game development</strong>
+			<p class="reveal text-sm leading-[2.1] text-text-secondary md:text-base">
+				<!-- I came up through <strong class="font-normal text-text-primary">game development</strong>
 				with Unity and Godot, and studied
 				<strong class="font-normal text-text-primary">multimedia production</strong>
 				at university — which means I think in systems, understand 3D space, and bring genuine design
 				instinct to interfaces most developers treat as purely functional.
-				<br /><br />
-				Today I build full-stack web applications and target
+				<br /><br /> -->
+				{$t.about.body1}
+				<!-- Today I build full-stack web applications and target
 				<strong class="font-normal text-text-primary"
 					>remote contracts with European companies</strong
 				>, working from Cali, Colombia in a timezone that overlaps comfortably with CET. I write
 				secure code by default — cybersecurity training means I think about OWASP and auth flows
-				from day one.
+				from day one. -->
+				{$t.about.body2}
 			</p>
 
 			<!-- Facts table -->
@@ -69,8 +72,10 @@
 					<div
 						class="border-border/50 flex items-center justify-between border-b px-4 py-3 text-xs last:border-0"
 					>
-						<span class="tracking-wider text-text-muted uppercase">{fact.key}</span>
-						<span class={fact.accent ? 'text-accent' : 'text-text-primary'}>{fact.value}</span>
+						<span class="tracking-wider text-text-muted uppercase md:text-base">{fact.key}</span>
+						<span class={fact.accent ? 'text-accent' : 'text-text-primary md:text-base'}
+							>{fact.value}</span
+						>
 					</div>
 				{/each}
 			</div>

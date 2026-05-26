@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { t } from '$lib/stores/language';
 
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);
@@ -58,12 +59,12 @@
 			<span class="rounded border border-accent/30 px-2 py-0.5 text-xs tracking-[0.2em] text-accent"
 				>03</span
 			>
-			<span class="text-xs tracking-[0.2em] text-text-muted uppercase">skills</span>
+			<span class="text-xs tracking-[0.2em] text-text-muted uppercase">{$t.skills.label}</span>
 			<div class="from-border h-px flex-1 bg-gradient-to-r to-transparent"></div>
 		</div>
 
 		<h2 class="reveal mb-10 font-display text-4xl font-bold tracking-tight">
-			What I work<br />with <em class="text-accent">daily</em>
+			{$t.skills.title1}<br />{$t.skills.title2} <em class="text-accent">{$t.skills.titleEm}</em>
 		</h2>
 
 		<div class="grid gap-4 md:grid-cols-3">

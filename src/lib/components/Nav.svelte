@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { base } from '$app/paths';
+	import { language, t } from '$lib/stores/language';
 
 	let scrolled = false;
 	let menuOpen = false;
 
-	// Add a subtle background to the nav when the user scrolls down
+	function toggleLanguage() {
+		language.update((l) => (l === 'en' ? 'es' : 'en'));
+	}
+
+	// Adds a subtle background to the nav when the user scrolls down
 	onMount(() => {
 		const handleScroll = () => {
 			scrolled = window.scrollY > 20;
@@ -36,7 +41,7 @@
 
 		<!-- Desktop links -->
 		<ul class="hidden gap-8 text-xs tracking-widest md:flex">
-			{#each links as link (link.href)}
+			{#each [{ href: '#about', label: $t.nav.about }, { href: '#work', label: $t.nav.work }, { href: '#skills', label: $t.nav.skills }, { href: '#contact', label: $t.nav.contact }] as link (link.href)}
 				<li>
 					<a
 						href={link.href}
@@ -48,10 +53,19 @@
 			{/each}
 		</ul>
 
-		<!-- CTA -->
-		<div class="hidden items-center gap-2 text-xs tracking-wider text-accent md:flex">
-			<span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400"></span>
-			available for hire
+		<!-- CTA + language toggle -->
+		<div class="hidden items-center gap-4 md:flex">
+			<button
+				onclick={toggleLanguage}
+				class="rounded border border-border px-2
+           py-1 text-xs tracking-widest text-text-muted transition-colors duration-200 hover:text-accent"
+			>
+				{$language === 'en' ? 'ES' : 'EN'}
+			</button>
+			<div class="flex items-center gap-2 text-xs tracking-wider text-accent">
+				<span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400"></span>
+				{$t.nav.available}
+			</div>
 		</div>
 
 		<!-- Mobile hamburger -->

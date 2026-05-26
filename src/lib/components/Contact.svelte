@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { t } from '$lib/stores/language';
 
 	// Form state
 	let name = '';
@@ -58,7 +59,7 @@
 			<span class="rounded border border-accent/30 px-2 py-0.5 text-xs tracking-[0.2em] text-accent"
 				>04</span
 			>
-			<span class="text-xs tracking-[0.2em] text-text-muted uppercase">contact</span>
+			<span class="text-xs tracking-[0.2em] text-text-muted uppercase">{$t.contact.label}</span>
 			<div class="from-border h-px flex-1 bg-gradient-to-r to-transparent"></div>
 		</div>
 
@@ -66,11 +67,10 @@
 			<!-- Left -->
 			<div>
 				<h2 class="reveal mb-5 font-display text-5xl leading-[0.93] font-bold tracking-tight">
-					Let's work<br /><em class="text-accent">together</em>
+					{$t.contact.title1}<br /><em class="text-accent">{$t.contact.titleEm}</em>
 				</h2>
-				<p class="reveal mb-8 max-w-xs text-xs leading-relaxed text-text-secondary">
-					Open to remote contracts with European companies. Available immediately. CET-friendly
-					hours. Comfortable with async-first workflows.
+				<p class="reveal mb-8 max-w-xs text-xs leading-relaxed text-text-secondary md:text-base">
+					{$t.contact.desc}
 				</p>
 				<div class="reveal flex flex-col">
 					{#each links as link (link.href)}
@@ -79,7 +79,7 @@
 							class="border-border/50 group flex items-center justify-between border-b py-3
                       text-xs transition-colors duration-150 hover:border-accent/30"
 						>
-							<span class="tracking-wider text-text-muted uppercase">{link.key}</span>
+							<span class="tracking-wider text-text-muted uppercase md:text-base">{link.key}</span>
 							<span
 								class="flex items-center gap-1 text-accent/80 transition-colors group-hover:text-accent"
 							>
@@ -94,8 +94,8 @@
 			<div class="reveal flex flex-col gap-4 rounded-xl border border-border bg-bg-secondary p-7">
 				<div class="grid grid-cols-2 gap-3">
 					<div>
-						<div class="mb-1.5 text-[9px] tracking-[0.18em] text-text-muted uppercase">
-							your name
+						<div class="mb-1.5 text-[9px] tracking-[0.18em] text-text-muted uppercase md:text-base">
+							{$t.contact.nameLbl}
 						</div>
 						<input
 							bind:value={name}
@@ -106,7 +106,9 @@
 						/>
 					</div>
 					<div>
-						<div class="mb-1.5 text-[9px] tracking-[0.18em] text-text-muted uppercase">company</div>
+						<div class="mb-1.5 text-[9px] tracking-[0.18em] text-text-muted uppercase md:text-base">
+							{$t.contact.companyLbl}
+						</div>
 						<input
 							bind:value={company}
 							type="text"
@@ -118,7 +120,9 @@
 				</div>
 
 				<div>
-					<div class="mb-1.5 text-[9px] tracking-[0.18em] text-text-muted uppercase">email</div>
+					<div class="mb-1.5 text-[9px] tracking-[0.18em] text-text-muted uppercase md:text-base">
+						{$t.contact.emailLbl}
+					</div>
 					<input
 						bind:value={email}
 						type="email"
@@ -129,11 +133,13 @@
 				</div>
 
 				<div>
-					<div class="mb-1.5 text-[9px] tracking-[0.18em] text-text-muted uppercase">message</div>
+					<div class="mb-1.5 text-[9px] tracking-[0.18em] text-text-muted uppercase md:text-base">
+						{$t.contact.messageLbl}
+					</div>
 					<textarea
 						bind:value={message}
 						rows="4"
-						placeholder="We'd love to discuss a remote contract..."
+						placeholder={$t.contact.messagePh}
 						class="w-full resize-none rounded border border-border bg-bg-primary px-3 py-2.5 text-xs
                    text-text-secondary transition-colors placeholder:text-text-muted/40 focus:border-accent/40
                    focus:outline-none"
@@ -147,13 +153,13 @@
                  transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
 				>
 					{#if status === 'idle'}
-						send message →
+						{$t.contact.send}
 					{:else if status === 'sending'}
-						sending...
+						{$t.contact.sending}
 					{:else if status === 'sent'}
-						sent ✓ — I'll be in touch
+						{$t.contact.sent}
 					{:else}
-						something went wrong — try email directly
+						{$t.contact.error}
 					{/if}
 				</button>
 			</div>
