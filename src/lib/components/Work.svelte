@@ -30,10 +30,10 @@
 		{
 			num: '002',
 			title: 'Color Palette Generator',
-			desc: 'Color theory engine generating harmonious palettes (complementary, triadic, analogous) from any base color. Export to CSS, Tailwind, JSON tokens.',
-			tags: ['SvelteKit', 'TypeScript', 'Canvas API'],
+			desc: 'Color theory engine generating harmonious palettes (complementary, triadic, analogous, and more) from any base color. Export to CSS, Tailwind, JSON tokens.',
+			tags: ['React', 'TypeScript', 'Canvas API'],
 			url: 'https://github.com/JdR2V/color-palette-generator',
-			live: 'https://newcolorpalette.netlify.app/'
+			live: 'https://jdr2v.github.io/color-palette-generator/'
 		},
 		{
 			num: '003',
